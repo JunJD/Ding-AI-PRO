@@ -1,9 +1,15 @@
-const { withContentlayer } = require("next-contentlayer");
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+  redirects: async () => {
+    return [
+      {
+        source: "/github",
+        destination: "https://github.com/JunJD/Ding-AI-PRO",
+        permanent: true,
+      },
+    ];
+  },
+  productionBrowserSourceMaps: true,
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = nextConfig;

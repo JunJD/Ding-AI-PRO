@@ -1,5 +1,5 @@
 {
-  "name": "next-contentlayer",
+  "name": "DING AI PRO",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,13 +14,10 @@
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
-    "@vercel/analytics": "^1.0.0",
     "autoprefixer": "10.4.14",
-    "contentlayer": "^0.3.2",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "next": "13.4.1",
-    "next-contentlayer": "^0.3.2",
     "next-themes": "^0.2.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
