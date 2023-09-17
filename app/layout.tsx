@@ -1,5 +1,5 @@
 import Link from "next/link"
-import "./globals.css"
+import "@/lib/styles/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "@/components/mode-toggle"

@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dingai-black: rgb(0 0 0);
+  --dingai-white: rgb(255 255 255);
+  --dingai-stone-50: rgb(250 250 249);
+  --dingai-stone-100: rgb(245 245 244);
+  --dingai-stone-200: rgb(231 229 228);
+  --dingai-stone-300: rgb(214 211 209);
+  --dingai-stone-400: rgb(168 162 158);
+  --dingai-stone-500: rgb(120 113 108);
+  --dingai-stone-600: rgb(87 83 78);
+  --dingai-stone-700: rgb(68 64 60);
+  --dingai-stone-800: rgb(41 37 36);
+  --dingai-stone-900: rgb(28 25 23);
+
+  --dingai-highlight-default: #ffffff;
+  --dingai-highlight-purple: #f6f3f8;
+  --dingai-highlight-red: #fdebeb;
+  --dingai-highlight-yellow: #fbf4a2;
+  --dingai-highlight-blue: #c1ecf9;
+  --dingai-highlight-green: #acf79f;
+  --dingai-highlight-orange: #faebdd;
+  --dingai-highlight-pink: #faf1f5;
+  --dingai-highlight-gray: #f1f1ef;
+}
+
+.dark-theme {
+  --dingai-black: rgb(255 255 255);
+  --dingai-white: rgb(25 25 25);
+  --dingai-stone-50: rgb(35 35 34);
+  --dingai-stone-100: rgb(41 37 36);
+  --dingai-stone-200: rgb(66 69 71);
+  --dingai-stone-300: rgb(112 118 123);
+  --dingai-stone-400: rgb(160 167 173);
+  --dingai-stone-500: rgb(193 199 204);
+  --dingai-stone-600: rgb(212 217 221);
+  --dingai-stone-700: rgb(229 232 235);
+  --dingai-stone-800: rgb(232 234 235);
+  --dingai-stone-900: rgb(240, 240, 241);
+
+  --dingai-highlight-default: #000000;
+  --dingai-highlight-purple: #3f2c4b;
+  --dingai-highlight-red: #5c1a1a;
+  --dingai-highlight-yellow: #5c4b1a;
+  --dingai-highlight-blue: #1a3d5c;
+  --dingai-highlight-green: #1a5c20;
+  --dingai-highlight-orange: #5c3a1a;
+  --dingai-highlight-pink: #5c1a3a;
+  --dingai-highlight-gray: #3a3a3a;
+}
+
+body {
+  background-color: var(--dingai-white);
+}
