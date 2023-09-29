@@ -32,6 +32,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
         }}
       >
         {children}
-      </AppContext.Provider></NextThemesProvider>
+      </AppContext.Provider>
+    </NextThemesProvider>
   )
 }

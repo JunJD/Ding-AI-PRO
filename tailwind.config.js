@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
   ],
   darkMode: ["class", ".dark-theme"],
   theme: {
@@ -25,6 +26,10 @@ module.exports = {
           800: "var(--dingai-stone-800)",
           900: "var(--dingai-stone-900)",
         },
+      },
+      boxShadow: {
+        'DEFAULT': 'var(--dingai-stone-boxShadow-default)',
+        'active': 'var(--dingai-stone-boxShadow-active)',
       },
     },
   },

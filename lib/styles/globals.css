@@ -25,6 +25,9 @@
   --dingai-highlight-orange: #faebdd;
   --dingai-highlight-pink: #faf1f5;
   --dingai-highlight-gray: #f1f1ef;
+
+  --dingai-stone-boxShadow-default: rgba(0, 0, 0, 0.12) 0 4px 8px 0, rgba(0, 0, 0, 0.02) 0 0 0 1px;
+  --dingai-stone-boxShadow-active: rgba(0, 0, 0, 0.16) 0 2px 3px 0, rgba(0, 0, 0, 0.04) 0 0 0 1px;;
 }
 
 .dark-theme {

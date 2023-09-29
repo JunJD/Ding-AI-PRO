@@ -1,7 +1,8 @@
+import Editor from "@/lib/editor"
 export default function Home() {
   return (
-    <div className="prose dark:prose-invert">
-      1121212
+    <div className="mt-1">
+      <Editor/>
     </div>
   )
 }

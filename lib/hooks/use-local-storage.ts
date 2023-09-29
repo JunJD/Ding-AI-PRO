@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const useLocalStorage = <T>(
   key: string,
   initialValue: T,
   // eslint-disable-next-line no-unused-vars
-): [T, (value: T) => void] => {
+): [T, Dispatch<SetStateAction<T>>] => {
   const [storedValue, setStoredValue] = useState(initialValue);
 
   useEffect(() => {
@@ -14,8 +14,7 @@ const useLocalStorage = <T>(
       setStoredValue(JSON.parse(item));
     }
   }, [key]);
-
-  const setValue = (value: T) => {
+  const setValue: Dispatch<SetStateAction<T>> = (value) => {
     // Save state
     setStoredValue(value);
     // Save to localStorage
