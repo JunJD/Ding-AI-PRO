@@ -24,10 +24,8 @@ import {
   Code,
   CheckSquare,
 } from "lucide-react";
-// import LoadingCircle from "@/ui/icons/loading-circle";
 import { toast } from "sonner";
 import { getPrevText } from "@/lib/editor/utils";
-import { startImageUpload } from "@/lib/editor/plugins/upload-images";
 import { MagicWandIcon } from "@radix-ui/react-icons";
 
 interface CommandItemProps {
@@ -86,7 +84,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       command: ({ editor, range }: CommandProps) => {
         // editor.chain().focus().deleteRange(range).run();
         const OPENAI_API_KEY = window.prompt('输入OPENAI_API_KEY,eg: "sk-***********')
-        localStorage.setItem('OPENAI_API_KEY', OPENAI_API_KEY)
+        localStorage.setItem('OPENAI_API_KEY', OPENAI_API_KEY!)
         console.log(OPENAI_API_KEY);
       },
     },
@@ -203,27 +201,6 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       command: ({ editor, range }: CommandProps) =>
         editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
     },
-    {
-      title: "图片",
-      description: "从您的计算机上传图片。",
-      searchTerms: ["photo", "picture", "media"],
-      icon: <ImageIcon size={18} />,
-      command: ({ editor, range }: CommandProps) => {
-        editor.chain().focus().deleteRange(range).run();
-        // 上传图片
-        const input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/*";
-        input.onchange = async () => {
-          if (input.files?.length) {
-            const file = input.files[0];
-            const pos = editor.view.state.selection.from;
-            startImageUpload(file, editor.view, pos);
-          }
-        };
-        input.click();
-      },
-    },
   ].filter((item) => {
     if (typeof query === "string" && query.length > 0) {
       const search = query.toLowerCase();
@@ -270,7 +247,7 @@ const CommandList = ({
     api: "/api/generate",
     onResponse: (response) => {
       if (response.status === 429) {
-        // toast.error("You have reached your request limit for the day.");
+        toast.error("已经达到了你一天内的请求限制");
         return;
       }
       editor.chain().focus().deleteRange(range).run();
@@ -283,7 +260,7 @@ const CommandList = ({
       });
     },
     onError: (e) => {
-      // toast.error(e.message);
+      toast.error(e.message);
     },
   });
 
@@ -300,7 +277,7 @@ const CommandList = ({
             }),
             {
               headers: {
-                'openaikey': localStorage.getItem('OPENAI_API_KEY')
+                "openaikey": localStorage.getItem('OPENAI_API_KEY') ?? ''
               }
             }
           );
@@ -368,7 +345,7 @@ const CommandList = ({
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-md border border-stone-200 bg-white">
               {item.title === "继续写作" && isLoading ? (
-                <LoadingCircle />
+                'loading...'
               ) : (
                 item.icon
               )}

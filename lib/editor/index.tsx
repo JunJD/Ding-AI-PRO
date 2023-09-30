@@ -7,7 +7,7 @@ import { TiptapExtensions } from "./extensions";
 import useLocalStorage from "@/lib/hooks/use-local-storage";
 import { useDebouncedCallback } from "use-debounce";
 import { useCompletion } from "ai/react";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import DEFAULT_EDITOR_CONTENT from "./default-content";
 import { EditorBubbleMenu } from "./components/bubble-menu";
 import { getPrevText } from "@/lib/editor/utils";
@@ -84,7 +84,7 @@ export default function Editor() {
       });
     },
     onError: (err) => {
-      // toast.error(err.message);
+      toast.error(err.message);
       if (err.message === "You have reached your request limit for the day.") {
       }
     },

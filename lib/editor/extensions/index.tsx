@@ -13,14 +13,6 @@ import Highlight from "@tiptap/extension-highlight";
 import Heading from "@tiptap/extension-heading";
 import SlashCommand from "./slash-command";
 import { InputRule } from "@tiptap/core";
-import UploadImagesPlugin from "@/lib/editor/plugins/upload-images";
-import UpdatedImage from "./updated-image";
-
-const CustomImage = TiptapImage.extend({
-  addProseMirrorPlugins() {
-    return [UploadImagesPlugin()];
-  },
-});
 
 export const TiptapExtensions = [
   StarterKit.configure({
@@ -109,17 +101,6 @@ export const TiptapExtensions = [
     HTMLAttributes: {
       class:
         "text-stone-400 underline underline-offset-[3px] hover:text-stone-600 transition-colors cursor-pointer",
-    },
-  }),
-  CustomImage.configure({
-    allowBase64: true,
-    HTMLAttributes: {
-      class: "rounded-lg border border-stone-200",
-    },
-  }),
-  UpdatedImage.configure({
-    HTMLAttributes: {
-      class: "rounded-lg border border-stone-200",
     },
   }),
   Placeholder.configure({

@@ -113,6 +113,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+  sonner:
+    specifier: ^1.0.3
+    version: registry.npmmirror.com/sonner@1.0.3(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^1.14.0
     version: registry.npmmirror.com/tailwind-merge@1.14.0
@@ -5014,6 +5017,19 @@ packages:
     dependencies:
       solid-js: registry.npmmirror.com/solid-js@1.7.12
       swr-store: registry.npmmirror.com/swr-store@0.10.6
+    dev: false
+
+  registry.npmmirror.com/sonner@1.0.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-hBoA2zKuYW3lUnpx4K0vAn8j77YuYiwvP9sLQfieNS2pd5FkT20sMyPTDJnl9S+5T27ZJbwQRPiujwvDBwhZQg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sonner/-/sonner-1.0.3.tgz}
+    id: registry.npmmirror.com/sonner/1.0.3
+    name: sonner
+    version: 1.0.3
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
     dev: false
 
   registry.npmmirror.com/source-map-js@1.0.2:
