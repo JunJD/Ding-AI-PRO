@@ -14,6 +14,7 @@ import { getPrevText } from "@/lib/editor/utils";
 // import { ImageResizer } from "./components/image-resizer";
 import useSaveStatus from "./hooks/useSaveStatus";
 import { EditorState } from "@tiptap/pm/state";
+import useTableOfContents from "./hooks/useTableOfContents";
 
 export default function Editor() {
   const [content, setContent] = useLocalStorage(
@@ -24,6 +25,9 @@ export default function Editor() {
 
   const [hydrated, setHydrated] = useState(false);
 
+  // 生成目录hooks
+  const [items, setEditor] = useTableOfContents()
+  
   const debouncedUpdates = useDebouncedCallback(async ({ editor }) => {
     const json = editor.getJSON();
     setSaveStatus("Saving...");
@@ -33,7 +37,7 @@ export default function Editor() {
       setSaveStatus("Saved");
     }, 500);
   }, 750);
-
+  
   const editor = useEditor({
     extensions: TiptapExtensions,
     editorProps: TiptapEditorProps,
@@ -70,6 +74,14 @@ export default function Editor() {
     },
     autofocus: "end",
   });
+
+  useEffect(()=>{
+    editor && setEditor(editor)
+  },[editor])
+
+  useEffect(()=>{
+    console.log(items)
+  }, [items])
 
   const { complete, completion, isLoading, stop } = useCompletion({
     id: "novel",
