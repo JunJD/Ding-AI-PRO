@@ -10,6 +10,7 @@ import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import { Markdown } from "tiptap-markdown";
 import Highlight from "@tiptap/extension-highlight";
+import Heading from "@tiptap/extension-heading";
 import SlashCommand from "./slash-command";
 import { InputRule } from "@tiptap/core";
 import UploadImagesPlugin from "@/lib/editor/plugins/upload-images";
@@ -28,6 +29,7 @@ export const TiptapExtensions = [
         class: "list-disc list-outside leading-3 -mt-2",
       },
     },
+    heading: false,
     orderedList: {
       HTMLAttributes: {
         class: "list-decimal list-outside leading-3 -mt-2",
@@ -62,6 +64,20 @@ export const TiptapExtensions = [
       width: 4,
     },
     gapcursor: false,
+  }),
+  Heading.extend({
+    addAttributes() {
+      return {
+        level: {
+          default: 1,
+          rendered: false,
+        },
+        id: {
+          default: null,
+          rendered: true,
+        }
+      };
+    },
   }),
   // patch to fix horizontal rule bug: https://github.com/ueberdosis/tiptap/pull/3859#issuecomment-1536799740
   HorizontalRule.extend({
@@ -111,12 +127,12 @@ export const TiptapExtensions = [
       if (node.type.name === "heading") {
         return `Heading ${node.attrs.level}`;
       }
-      if(localStorage.getItem('OPENAI_API_KEY')) {
+      if (localStorage.getItem('OPENAI_API_KEY')) {
         return "按下'/'键来访问命令，或者你可以使用'++'键来使用AI自动补全功能";
       } else {
         return "按下'/'键来访问命令，选择‘更换ai密钥’并输入您的openai密钥"
       }
-      
+
     },
     includeChildren: true,
   }),

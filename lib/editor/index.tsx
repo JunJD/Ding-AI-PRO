@@ -15,6 +15,7 @@ import { getPrevText } from "@/lib/editor/utils";
 import useSaveStatus from "./hooks/useSaveStatus";
 import { EditorState } from "@tiptap/pm/state";
 import useTableOfContents from "./hooks/useTableOfContents";
+import TableOfContent from "../tableOfContent";
 
 export default function Editor() {
   const [content, setContent] = useLocalStorage(
@@ -24,9 +25,6 @@ export default function Editor() {
   const { setSaveStatus } = useSaveStatus();
 
   const [hydrated, setHydrated] = useState(false);
-
-  // 生成目录hooks
-  const [items, setEditor] = useTableOfContents()
   
   const debouncedUpdates = useDebouncedCallback(async ({ editor }) => {
     const json = editor.getJSON();
@@ -74,14 +72,6 @@ export default function Editor() {
     },
     autofocus: "end",
   });
-
-  useEffect(()=>{
-    editor && setEditor(editor)
-  },[editor])
-
-  useEffect(()=>{
-    console.log(items)
-  }, [items])
 
   const { complete, completion, isLoading, stop } = useCompletion({
     id: "novel",
@@ -161,6 +151,7 @@ export default function Editor() {
       className="flex w-full bg-white pt-3"
     >
       {editor && <EditorBubbleMenu editor={editor} />}
+      {editor && <TableOfContent editor={editor}/>}
       {/* {editor?.isActive("image") && <ImageResizer editor={editor} />} */}
       <EditorContent className="grow overflow-auto overscroll-none" style={{ height: 'calc(100vh - 65px)' }} editor={editor} />
     </div>
