@@ -1,7 +1,6 @@
 import StarterKit from "@tiptap/starter-kit";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
 import TiptapLink from "@tiptap/extension-link";
-import TiptapImage from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
 import TiptapUnderline from "@tiptap/extension-underline";
 import TextStyle from "@tiptap/extension-text-style";
@@ -60,10 +59,7 @@ export const TiptapExtensions = [
   Heading.extend({
     addAttributes() {
       return {
-        level: {
-          default: 1,
-          rendered: false,
-        },
+        ...this.parent?.(),
         id: {
           default: null,
           rendered: true,
@@ -105,6 +101,7 @@ export const TiptapExtensions = [
   }),
   Placeholder.configure({
     placeholder: ({ node }) => {
+      console.log('node.', node.type.name)
       if (node.type.name === "heading") {
         return `Heading ${node.attrs.level}`;
       }
@@ -131,7 +128,7 @@ export const TiptapExtensions = [
   }),
   TaskItem.configure({
     HTMLAttributes: {
-      class: "flex items-start my-4",
+      class: "flex items-start my-4 gap-1",
     },
     nested: true,
   }),

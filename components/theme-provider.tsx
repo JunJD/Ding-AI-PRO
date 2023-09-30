@@ -1,10 +1,10 @@
 "use client"
 
 import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 import type { ThemeProviderProps } from "next-themes/dist/types"
 import useLocalStorage from "@/lib/hooks/use-local-storage";
-
+import { Toaster } from "sonner";
 export const AppContext = createContext<{
   font: string;
   setFont: Dispatch<SetStateAction<string>>;
@@ -12,6 +12,13 @@ export const AppContext = createContext<{
   font: "Default",
   setFont: () => { },
 });
+
+const ToasterProvider = () => {
+  const { theme } = useTheme() as {
+    theme: "light" | "dark" | "system";
+  };
+  return <Toaster theme={theme} />;
+};
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
@@ -25,6 +32,8 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
         dark: "dark-theme",
       }} defaultTheme="system"
     >
+
+      <ToasterProvider />
       <AppContext.Provider
         value={{
           font,

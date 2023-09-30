@@ -11,10 +11,7 @@ import { toast } from "sonner";
 import DEFAULT_EDITOR_CONTENT from "./default-content";
 import { EditorBubbleMenu } from "./components/bubble-menu";
 import { getPrevText } from "@/lib/editor/utils";
-// import { ImageResizer } from "./components/image-resizer";
 import useSaveStatus from "./hooks/useSaveStatus";
-import { EditorState } from "@tiptap/pm/state";
-import useTableOfContents from "./hooks/useTableOfContents";
 import TableOfContent from "../tableOfContent";
 
 export default function Editor() {
@@ -22,6 +19,7 @@ export default function Editor() {
     "content",
     DEFAULT_EDITOR_CONTENT,
   );
+  
   const { setSaveStatus } = useSaveStatus();
 
   const [hydrated, setHydrated] = useState(false);
@@ -30,7 +28,6 @@ export default function Editor() {
     const json = editor.getJSON();
     setSaveStatus("Saving...");
     setContent(json);
-    // Simulate a delay in saving.
     setTimeout(() => {
       setSaveStatus("Saved");
     }, 500);

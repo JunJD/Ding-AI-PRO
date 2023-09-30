@@ -35,9 +35,6 @@ dependencies:
   '@tiptap/extension-horizontal-rule':
     specifier: ^2.1.10
     version: registry.npmmirror.com/@tiptap/extension-horizontal-rule@2.1.10(@tiptap/core@2.1.10)(@tiptap/pm@2.1.10)
-  '@tiptap/extension-image':
-    specifier: ^2.1.10
-    version: registry.npmmirror.com/@tiptap/extension-image@2.1.10(@tiptap/core@2.1.10)
   '@tiptap/extension-link':
     specifier: ^2.1.10
     version: registry.npmmirror.com/@tiptap/extension-link@2.1.10(@tiptap/core@2.1.10)(@tiptap/pm@2.1.10)
@@ -114,8 +111,8 @@ dependencies:
     specifier: 18.2.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
   sonner:
-    specifier: ^1.0.3
-    version: registry.npmmirror.com/sonner@1.0.3(react-dom@18.2.0)(react@18.2.0)
+    specifier: 0.6.2
+    version: registry.npmmirror.com/sonner@0.6.2(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^1.14.0
     version: registry.npmmirror.com/tailwind-merge@1.14.0
@@ -1285,17 +1282,6 @@ packages:
     dependencies:
       '@tiptap/core': registry.npmmirror.com/@tiptap/core@2.1.10(@tiptap/pm@2.1.10)
       '@tiptap/pm': registry.npmmirror.com/@tiptap/pm@2.1.10
-    dev: false
-
-  registry.npmmirror.com/@tiptap/extension-image@2.1.10(@tiptap/core@2.1.10):
-    resolution: {integrity: sha512-d7+d4J2TJ99+phFbVTpsFhi208jAgcrfbdwUDkkwjdF+PQhax5pounSt/8eZPWdyCXj+EWYjCjx0znwsD6+SCA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tiptap/extension-image/-/extension-image-2.1.10.tgz}
-    id: registry.npmmirror.com/@tiptap/extension-image/2.1.10
-    name: '@tiptap/extension-image'
-    version: 2.1.10
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-    dependencies:
-      '@tiptap/core': registry.npmmirror.com/@tiptap/core@2.1.10(@tiptap/pm@2.1.10)
     dev: false
 
   registry.npmmirror.com/@tiptap/extension-italic@2.1.10(@tiptap/core@2.1.10):
@@ -5019,11 +5005,11 @@ packages:
       swr-store: registry.npmmirror.com/swr-store@0.10.6
     dev: false
 
-  registry.npmmirror.com/sonner@1.0.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-hBoA2zKuYW3lUnpx4K0vAn8j77YuYiwvP9sLQfieNS2pd5FkT20sMyPTDJnl9S+5T27ZJbwQRPiujwvDBwhZQg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sonner/-/sonner-1.0.3.tgz}
-    id: registry.npmmirror.com/sonner/1.0.3
+  registry.npmmirror.com/sonner@0.6.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-bh4FWhYoNN481ZIW94W4e0kSLBTMGislYg2YXvDS1px1AJJz4erQe9jHV8s5pS1VMVDgfh3CslNSFLaU6Ldrnw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sonner/-/sonner-0.6.2.tgz}
+    id: registry.npmmirror.com/sonner/0.6.2
     name: sonner
-    version: 1.0.3
+    version: 0.6.2
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0

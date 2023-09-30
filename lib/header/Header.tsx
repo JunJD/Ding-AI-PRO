@@ -5,7 +5,7 @@ export default function Header() {
 
     return (
         <div className="flex justify-between items-center w-full z-10">
-            <div className="flex" style={{ gap: '6px' }}>
+            <div className="flex gap-2">
                 <Toolbar />
                 <Toolbar />
                 <Toolbar />
