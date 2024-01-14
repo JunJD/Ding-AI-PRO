@@ -11,6 +11,7 @@ import { Markdown } from "tiptap-markdown";
 import Highlight from "@tiptap/extension-highlight";
 import Heading from "@tiptap/extension-heading";
 import SlashCommand from "./slash-command";
+import ExtensionAi from './extensionAi'
 import { InputRule } from "@tiptap/core";
 
 export const TiptapExtensions = [
@@ -57,6 +58,7 @@ export const TiptapExtensions = [
     gapcursor: false,
   }),
   Heading.extend({
+    draggable: true,
     addAttributes() {
       return {
         ...this.parent?.(),
@@ -115,6 +117,10 @@ export const TiptapExtensions = [
     includeChildren: true,
   }),
   SlashCommand,
+  ExtensionAi.configure({
+    api: "/api/generate",
+    openaiApiKey: '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'
+  }),
   TiptapUnderline,
   TextStyle,
   Color,

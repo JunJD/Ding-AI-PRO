@@ -10,7 +10,6 @@ import {
 
 import { NodeSelector } from "./node-selector";
 import { ColorSelector } from "./color-selector";
-import { LinkSelector } from "./link-selector";
 import { cn } from "@/lib/utils";
 
 export interface BubbleMenuItem {
@@ -91,15 +90,6 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
           setIsNodeSelectorOpen(!isNodeSelectorOpen);
           setIsColorSelectorOpen(false);
           setIsLinkSelectorOpen(false);
-        }}
-      />
-      <LinkSelector
-        editor={props.editor!}
-        isOpen={isLinkSelectorOpen}
-        setIsOpen={() => {
-          setIsLinkSelectorOpen(!isLinkSelectorOpen);
-          setIsColorSelectorOpen(false);
-          setIsNodeSelectorOpen(false);
         }}
       />
       <div className="flex">

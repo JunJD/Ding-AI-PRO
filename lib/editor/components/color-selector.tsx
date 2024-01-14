@@ -17,7 +17,7 @@ interface ColorSelectorProps {
 const TEXT_COLORS: BubbleColorMenuItem[] = [
   {
     name: "Default",
-    color: "var(--novel-black)",
+    color: "var(--dingai-black)",
   },
   {
     name: "Purple",
@@ -56,39 +56,39 @@ const TEXT_COLORS: BubbleColorMenuItem[] = [
 const HIGHLIGHT_COLORS: BubbleColorMenuItem[] = [
   {
     name: "Default",
-    color: "var(--novel-highlight-default)",
+    color: "var(--dingai-highlight-default)",
   },
   {
     name: "Purple",
-    color: "var(--novel-highlight-purple)",
+    color: "var(--dingai-highlight-purple)",
   },
   {
     name: "Red",
-    color: "var(--novel-highlight-red)",
+    color: "var(--dingai-highlight-red)",
   },
   {
     name: "Yellow",
-    color: "var(--novel-highlight-yellow)",
+    color: "var(--dingai-highlight-yellow)",
   },
   {
     name: "Blue",
-    color: "var(--novel-highlight-blue)",
+    color: "var(--dingai-highlight-blue)",
   },
   {
     name: "Green",
-    color: "var(--novel-highlight-green)",
+    color: "var(--dingai-highlight-green)",
   },
   {
     name: "Orange",
-    color: "var(--novel-highlight-orange)",
+    color: "var(--dingai-highlight-orange)",
   },
   {
     name: "Pink",
-    color: "var(--novel-highlight-pink)",
+    color: "var(--dingai-highlight-pink)",
   },
   {
     name: "Gray",
-    color: "var(--novel-highlight-gray)",
+    color: "var(--dingai-highlight-gray)",
   },
 ];
 
@@ -115,8 +115,8 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
           <span
             className="rounded-sm px-1"
             style={{
-              color: activeColorItem?.color,
-              backgroundColor: activeHighlightItem?.color,
+              color: activeColorItem?.color!,
+              backgroundColor: activeHighlightItem?.color!,
             }}
           >
             A
@@ -136,7 +136,7 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
               onClick={() => {
                 editor.commands.unsetColor();
                 name !== "Default" &&
-                  editor.chain().focus().setColor(color).run();
+                  editor.chain().focus().setColor(color!).run();
                 setIsOpen(false);
               }}
               className="flex items-center justify-between rounded-sm px-2 py-1 text-sm text-stone-600 hover:bg-stone-100"
@@ -145,7 +145,7 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
               <div className="flex items-center space-x-2">
                 <div
                   className="rounded-sm border border-stone-200 px-1 py-px font-medium"
-                  style={{ color }}
+                  style={{ color: color! }}
                 >
                   A
                 </div>
@@ -166,7 +166,7 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
               key={index}
               onClick={() => {
                 editor.commands.unsetHighlight();
-                name !== "Default" && editor.commands.setHighlight({ color });
+                name !== "Default" && editor.commands.setHighlight({ color: color! });
                 setIsOpen(false);
               }}
               className="flex items-center justify-between rounded-sm px-2 py-1 text-sm text-stone-600 hover:bg-stone-100"
@@ -175,7 +175,7 @@ export const ColorSelector: FC<ColorSelectorProps> = ({
               <div className="flex items-center space-x-2">
                 <div
                   className="rounded-sm border border-stone-200 px-1 py-px font-medium"
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: color! }}
                 >
                   A
                 </div>

@@ -1,10 +1,7 @@
 import "@/lib/styles/globals.css"
-import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/mode-toggle"
+// import { ModeToggle } from "@/components/mode-toggle"
 import Header from "@/lib/header/Header"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "DING AI PRO",
@@ -19,7 +16,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
+        className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50`}
       >
         <ThemeProvider>
           <div className="mx-auto pt-4 px-4">

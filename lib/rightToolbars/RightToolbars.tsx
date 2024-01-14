@@ -1,9 +1,11 @@
 "use client"
 import { ChatBubbleIcon, DotsHorizontalIcon, FaceIcon, ImageIcon, ResetIcon, SunIcon } from '@radix-ui/react-icons'
-import useSaveStatus from '../editor/hooks/useSaveStatus';
+import { editorSaveStatusAtom } from '../../store/saveStatusAtom';
+import { useAtomValue } from 'jotai';
 
 export default function RightToolbars() {
-    const { saveStatus } = useSaveStatus();
+
+    const saveStatus = useAtomValue(editorSaveStatusAtom)
     return (
         <div className='flex' style={{ gap: '18px' }}>
             <div className="rounded-lg bg-stone-100 px-2 py-1 text-sm text-stone-400">

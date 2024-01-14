@@ -11,19 +11,20 @@ import { toast } from "sonner";
 import DEFAULT_EDITOR_CONTENT from "./default-content";
 import { EditorBubbleMenu } from "./components/bubble-menu";
 import { getPrevText } from "@/lib/editor/utils";
-import useSaveStatus from "./hooks/useSaveStatus";
+import { editorSaveStatusAtom } from "../../store/saveStatusAtom";
 import TableOfContent from "../tableOfContent";
+import { useSetAtom } from "jotai";
 
 export default function Editor() {
   const [content, setContent] = useLocalStorage(
     "content",
     DEFAULT_EDITOR_CONTENT,
   );
-  
-  const { setSaveStatus } = useSaveStatus();
+
+  const setSaveStatus = useSetAtom(editorSaveStatusAtom)
 
   const [hydrated, setHydrated] = useState(false);
-  
+
   const debouncedUpdates = useDebouncedCallback(async ({ editor }) => {
     const json = editor.getJSON();
     setSaveStatus("Saving...");
@@ -32,7 +33,7 @@ export default function Editor() {
       setSaveStatus("Saved");
     }, 500);
   }, 750);
-  
+
   const editor = useEditor({
     extensions: TiptapExtensions,
     editorProps: TiptapEditorProps,
@@ -51,24 +52,37 @@ export default function Editor() {
           from: selection.from - 2,
           to: selection.from,
         });
-        complete(
-          getPrevText(e.editor, {
-            chars: 5000,
-          }),
-          {
-            headers: {
-              'openaikey': localStorage.getItem('OPENAI_API_KEY')!
+        try {
+          console.log(111111)
+          complete(
+            getPrevText(e.editor, {
+              chars: 5000,
+            }),
+            {
+              headers: {
+                'openaikey': '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'
+              }
             }
-          }
-        );
+          );
+        } catch (error) {
+          console.log(222222)
+          console.log(error)
+        }
         // complete(e.editor.storage.markdown.getMarkdown());
         console.log('自动完成快捷方式已使用');
       } else {
+        console.log('debouncedUpdates')
         debouncedUpdates(e);
       }
     },
     autofocus: "end",
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      editor && editor!.commands.aiAdjustTone()
+    }, 3000)
+  }, [editor])
 
   const { complete, completion, isLoading, stop } = useCompletion({
     id: "novel",
@@ -148,7 +162,7 @@ export default function Editor() {
       className="flex w-full bg-white pt-3"
     >
       {editor && <EditorBubbleMenu editor={editor} />}
-      {editor && <TableOfContent editor={editor}/>}
+      {editor && <TableOfContent editor={editor} />}
       {/* {editor?.isActive("image") && <ImageResizer editor={editor} />} */}
       <EditorContent className="grow overflow-auto overscroll-none" style={{ height: 'calc(100vh - 65px)' }} editor={editor} />
     </div>
